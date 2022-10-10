@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import Form from './components/form';
 
 function App() {
+  const [isTelentForm, setIsTelentFrom] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="my-3">
+      <div className="mb-2 d-flex align-items-center justify-content-center">
+        <div className="bg-secondary rounded-pill p-1">
+          <label className={`${!isTelentForm ? 'bg-dark text-white rounded-pill' : ''} me-2 p-2`} onClick={() => setIsTelentFrom(false)}>
+            FAN SIGNUP
+          </label>
+          <label className={`${isTelentForm ? 'bg-dark text-white rounded-pill' : ''} p-2`} onClick={() => setIsTelentFrom(true)}>
+            TALENT SIGNUP
+          </label>
+        </div>
+      </div>
+      <div className="App d-flex align-items-center justify-content-center">
+        <Form isTelentForm={isTelentForm} />
+      </div>
     </div>
   );
 }
